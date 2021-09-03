@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://resorces/supermarket atlas.png" type="Texture" id=2]
+[ext_resource path="res://timer_text.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30.0028, 16.8937 )
+
+[node name="player" type="KinematicBody2D"]
+position = Vector2( 513.158, 297.56 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -3.8147e-06, -24.8211 )
+scale = Vector2( 0.398681, 0.398681 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 818, 307, 127, 266 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.707153, 12.7279 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotating = true
+current = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -30.361, -4.40307, -23.5906, -75.3638, 19.5617, -75.6788, 29.0111, -4.33578, 23.3415, -4.17828, 18.9318, -73.9464, -22.3306, -73.4739, -24.063, -4.33578 )
+
+[node name="food_in_cart" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -37.1633
+margin_bottom = -23.1633
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+margin_top = 2.0
+margin_right = 1024.0
+margin_bottom = 16.0
+alignment = 1
+
+[node name="timer_text" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 498.0
+margin_right = 526.0
+align = 1

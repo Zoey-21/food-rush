@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://timer_text.gd" type="Script" id=1]
+
+[node name="timer_text" type="Label"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "1:00"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="timer diffrence" type="Label" parent="."]
+margin_left = -61.3518
+margin_top = 14.1581
+margin_right = 99.6482
+margin_bottom = 28.1581
+text = "br X 2 = +10 br+app = +5 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
