@@ -8,3 +8,13 @@ var foods_collected = [0,0,0,0,0,0]
 var foth = 10
 
 var foods_collected_end = [0,0,0,0,0,0]
+
+var time_played = 0.0
+
+func _process(delta):
+	time_played += delta
+	
+func get_time_played():
+	return time_played
+func reset_time_played():
+	time_played = 0.0

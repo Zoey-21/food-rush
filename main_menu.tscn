@@ -10,10 +10,11 @@
 script = ExtResource( 5 )
 
 [node name="start_story" type="TextureButton" parent="."]
-margin_left = 477.74
-margin_top = 526.216
-margin_right = 584.74
-margin_bottom = 633.216
+margin_left = 347.26
+margin_top = 544.601
+margin_right = 454.26
+margin_bottom = 651.601
+rect_scale = Vector2( 1.97902, 1.97902 )
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 2 )
