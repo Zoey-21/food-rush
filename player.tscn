@@ -1,8 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
-[ext_resource path="res://resorces/supermarket atlas.png" type="Texture" id=2]
+[ext_resource path="res://resorces/player.png" type="Texture" id=2]
 [ext_resource path="res://timer_text.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resorces/food/banana.png" type="Texture" id=4]
+[ext_resource path="res://resorces/sound/foth.wav" type="AudioStream" id=5]
+[ext_resource path="res://resorces/sound/hit.wav" type="AudioStream" id=6]
+[ext_resource path="res://resorces/sound/rooling.wav" type="AudioStream" id=7]
+[ext_resource path="res://resorces/sound/restock.wav" type="AudioStream" id=8]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 37.4039, 65.3572 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.0028, 16.8937 )
@@ -11,23 +19,24 @@ extents = Vector2( 30.0028, 16.8937 )
 position = Vector2( 513.158, 297.56 )
 script = ExtResource( 1 )
 
+[node name="bump" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bump"]
+position = Vector2( 0, -19.0703 )
+shape = SubResource( 2 )
+
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -3.8147e-06, -24.8211 )
-scale = Vector2( 0.398681, 0.398681 )
+position = Vector2( 2.64865, -22.1724 )
+scale = Vector2( 7.25208, 7.25208 )
 texture = ExtResource( 2 )
-region_enabled = true
 region_rect = Rect2( 818, 307, 127, 266 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.707153, 12.7279 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-rotating = true
-current = true
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -30.361, -4.40307, -23.5906, -75.3638, 19.5617, -75.6788, 29.0111, -4.33578, 23.3415, -4.17828, 18.9318, -73.9464, -22.3306, -73.4739, -24.063, -4.33578 )
+polygon = PoolVector2Array( -30.361, -4.40307, -25.8372, -73.0216, -19.0049, -73.1267, -19.2151, -79.8539, 17.3504, -79.7383, 18.2624, -73.4946, 24.0851, -73.1439, 29.0111, -4.33578, 23.3415, -4.17828, 17.637, -73.5872, -18.942, -73.0616, -24.063, -4.33578 )
 
 [node name="food_in_cart" type="Node2D" parent="."]
 
@@ -46,12 +55,56 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-margin_top = 2.0
 margin_right = 1024.0
-margin_bottom = 16.0
+margin_bottom = 44.0
 alignment = 1
 
+[node name="Sprite" type="Sprite" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+visible = false
+position = Vector2( 511, -40 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
 [node name="timer_text" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 498.0
-margin_right = 526.0
+margin_left = 462.0
+margin_top = 0.0
+margin_right = 562.0
+margin_bottom = 44.0
 align = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="foth" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="foth_between" type="Timer" parent="."]
+wait_time = 35.0
+one_shot = true
+autostart = true
+
+[node name="foth2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 10.0
+
+[node name="rolling" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -11.107
+
+[node name="restock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 15.0
+
+[node name="bump_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[connection signal="body_entered" from="bump" to="." method="_on_bump_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="foth" to="." method="_on_foth_timeout"]
+[connection signal="timeout" from="foth_between" to="." method="_on_foth_between_timeout"]

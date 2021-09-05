@@ -1,29 +1,94 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://resorces/supermarket atlas.png" type="Texture" id=1]
+[ext_resource path="res://resorces/cashier/cashier.png" type="Texture" id=1]
 [ext_resource path="res://cashier.gd" type="Script" id=2]
+[ext_resource path="res://resorces/cashier/cashier_2.png" type="Texture" id=3]
+[ext_resource path="res://resorces/cashier/cashier_3.png" type="Texture" id=4]
+[ext_resource path="res://resorces/sound/sale.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 125.871, 92.3627 )
+extents = Vector2( 125.871, 59.2851 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 124.5, 60.5 )
+extents = Vector2( 124.5, 31.3952 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "sale"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false, false, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false, true, false ]
+}
 
 [node name="cashier" type="Area2D"]
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 42, 366, 255, 126 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -27.6179 )
+position = Vector2( 0, -58.3771 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, -30.7592 )
 shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 15.521, -26.3581 )
+scale = Vector2( 11, 11 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 42, 366, 255, 126 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 15.521, -26.0045 )
+scale = Vector2( 11, 11 )
+texture = ExtResource( 3 )
+region_rect = Rect2( 42, 366, 255, 126 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+visible = false
+position = Vector2( 15.521, -26.0045 )
+scale = Vector2( 11, 11 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 42, 366, 255, 126 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/sale = SubResource( 3 )
+
+[node name="sale" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="body_entered" from="." to="." method="_on_cashier_body_entered"]

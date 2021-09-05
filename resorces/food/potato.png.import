@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/supermarket atlas.png-090dc4f42acf62929ead4ff5c2226dad.stex"
+path="res://.import/potato.png-6b92ad425a02d114cd703979abbc20c3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resorces/supermarket atlas.png"
-dest_files=[ "res://.import/supermarket atlas.png-090dc4f42acf62929ead4ff5c2226dad.stex" ]
+source_file="res://resorces/food/potato.png"
+dest_files=[ "res://.import/potato.png-6b92ad425a02d114cd703979abbc20c3.stex" ]
 
 [params]
 

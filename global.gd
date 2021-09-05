@@ -5,3 +5,6 @@ var foods_in_cart = [0,0,0,0,0,0]
 
 var foods_collected = [0,0,0,0,0,0]
 
+var foth = 10
+
+var foods_collected_end = [0,0,0,0,0,0]

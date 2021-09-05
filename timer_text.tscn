@@ -1,22 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://timer_text.gd" type="Script" id=1]
+[ext_resource path="res://resorces/ModernDOS4379x16.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
 
 [node name="timer_text" type="Label"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = -45.6084
+margin_top = -44.1942
+margin_right = 54.3916
+margin_bottom = -0.194183
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "1:00"
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="timer diffrence" type="Label" parent="."]
-margin_left = -61.3518
-margin_top = 14.1581
-margin_right = 99.6482
-margin_bottom = 28.1581
-text = "br X 2 = +10 br+app = +5 "
 __meta__ = {
 "_edit_use_anchors_": false
 }

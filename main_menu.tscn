@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resorces/book/book_1.png" type="Texture" id=1]
+[ext_resource path="res://resorces/book/book_2.png" type="Texture" id=2]
+[ext_resource path="res://resorces/book/book_3.png" type="Texture" id=3]
+[ext_resource path="res://resorces/openings/openings_1.png" type="Texture" id=4]
+[ext_resource path="res://main_menu.gd" type="Script" id=5]
+
+[node name="main_menu" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="start_story" type="TextureButton" parent="."]
+margin_left = 477.74
+margin_top = 526.216
+margin_right = 584.74
+margin_bottom = 633.216
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="openings_1" type="Sprite" parent="."]
+position = Vector2( 511.096, 256.815 )
+scale = Vector2( 32, 32 )
+texture = ExtResource( 4 )
+
+[connection signal="pressed" from="start_story" to="." method="_on_start_story_pressed"]
