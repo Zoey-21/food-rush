@@ -72,8 +72,8 @@ margin_right = 562.0
 margin_bottom = 44.0
 align = 1
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+[node name="restock2" type="Timer" parent="."]
+wait_time = 45.0
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -105,6 +105,6 @@ volume_db = 15.0
 stream = ExtResource( 6 )
 
 [connection signal="body_entered" from="bump" to="." method="_on_bump_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="restock2" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="foth" to="." method="_on_foth_timeout"]
 [connection signal="timeout" from="foth_between" to="." method="_on_foth_between_timeout"]

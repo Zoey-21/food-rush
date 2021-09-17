@@ -9,6 +9,15 @@
 [node name="main_menu" type="Node2D"]
 script = ExtResource( 5 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 509.0
+margin_right = 1037.0
+margin_bottom = 1031.0
+color = Color( 0.470588, 0.470588, 0.470588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="start_story" type="TextureButton" parent="."]
 margin_left = 347.26
 margin_top = 544.601

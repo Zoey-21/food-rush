@@ -4,7 +4,7 @@ var food = preload("res://food.tscn")
 
 func spawn_food():
 	if $foodspawn.get_child_count() == 0:
-		if randi() % 6 > 4:
+		if randi() % 7 > 5:
 			var food_inst = food.instance()
 			$foodspawn.add_child(food_inst)
 
